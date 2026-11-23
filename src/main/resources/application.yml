@@ -1,0 +1,36 @@
+spring:
+  application:
+    name: flood-state-migration-service
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://127.0.0.1:5432/ccdev}
+    username: ${DB_USER:ccdev}
+    password: ${DB_PASSWORD:ccdev}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+    properties:
+      hibernate.jdbc.time_zone: UTC
+  jackson:
+    default-property-inclusion: non_null
+
+server:
+  port: ${SERVER_PORT:8080}
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    operations-sorter: method
+  api-docs:
+    path: /v3/api-docs
+
+app:
+  seed-demo-data: true
+  security:
+    operator-password: ${APP_OPERATOR_PASSWORD:operator123}
+    admin-password: ${APP_ADMIN_PASSWORD:admin123}
+
+logging:
+  level:
+    root: info
+    com.flood.statemigrate: info
